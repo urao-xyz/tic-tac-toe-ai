@@ -11,7 +11,7 @@ Ce projet implémente un jeu de Tic-Tac-Toe avec une IA utilisant l'algorithme M
 
 1. Clonez le dépôt :
     ```sh
-    git clone <URL_DU_DEPOT>
+    git clone https://github.com/urao-xyz/tic-tac-toe-ai
     cd tic-tac-toe-ai
     ```
 
