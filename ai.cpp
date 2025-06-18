@@ -2,13 +2,39 @@
 #include "tictactoe.h"
 #include <limits>
 #include <algorithm>
+#include <cstring>
+
+int evaluateBoard(const char board[3][3]) {
+    char winner = getWinner(board);
+    if (winner == 'O') return 10;
+    if (winner == 'X') return -10;
+
+    auto evalLine = [](char a, char b, char c) {
+        int score = 0;
+        int o = (a == 'O') + (b == 'O') + (c == 'O');
+        int x = (a == 'X') + (b == 'X') + (c == 'X');
+        if (o > 0 && x == 0) score += o;
+        if (x > 0 && o == 0) score -= x;
+        return score;
+    };
+
+    int score = 0;
+    for (int i = 0; i < 3; ++i) {
+        score += evalLine(board[i][0], board[i][1], board[i][2]);
+        score += evalLine(board[0][i], board[1][i], board[2][i]);
+    }
+    score += evalLine(board[0][0], board[1][1], board[2][2]);
+    score += evalLine(board[0][2], board[1][1], board[2][0]);
+    return score;
+}
 
 namespace {
 int minimax(char board[3][3], bool isMaximizing, int alpha, int beta, int depth, int maxDepth) {
     char winner = getWinner(board);
     if (winner == 'O') return 10 - depth;
     if (winner == 'X') return depth - 10;
-    if (isGameOver(board) || depth == maxDepth) return 0;
+    if (depth == maxDepth) return evaluateBoard(board);
+    if (isGameOver(board)) return 0;
 
     if (isMaximizing) {
         int bestScore = std::numeric_limits<int>::min();
