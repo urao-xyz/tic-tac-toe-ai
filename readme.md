@@ -15,9 +15,9 @@ Ce projet implémente un jeu de Tic-Tac-Toe avec une IA utilisant l'algorithme M
     cd tic-tac-toe-ai
     ```
 
-2. Compilez le projet :
+2. Compilez le projet avec `make` :
     ```sh
-    g++ -o tictactoe main.cpp tictactoe.cpp ai.cpp -lsqlite3
+    make
     ```
 
 ## Utilisation
@@ -26,8 +26,9 @@ Ce projet implémente un jeu de Tic-Tac-Toe avec une IA utilisant l'algorithme M
     ```sh
     ./tictactoe
     ```
+    Vous pouvez aussi passer la difficulté en argument (`easy`, `medium` ou `hard`).
 
-2. Suivez les instructions à l'écran pour jouer contre l'IA.
+2. Suivez les instructions à l'écran pour jouer contre l'IA. A la fin de chaque partie, un tableau des scores cumulés est affiché et vous pouvez choisir de rejouer.
 
 ## Structure du projet
 
@@ -35,17 +36,14 @@ Ce projet implémente un jeu de Tic-Tac-Toe avec une IA utilisant l'algorithme M
 - `tictactoe.cpp` : Contient les fonctions de gestion du plateau de jeu.
 - `ai.cpp` : Contient l'implémentation de l'algorithme Minimax pour l'IA.
 - `tictactoe.h` et `ai.h` : Contiennent les déclarations des fonctions utilisées dans `tictactoe.cpp` et `ai.cpp`.
+- `scoreboard.cpp` et `scoreboard.h` : fonctions d'affichage du tableau des scores.
 
 ## Tests
 
 Pour compiler et exécuter les tests :
 
 ```sh
-g++ -std=c++11 -I. -o tests/test_tictactoe tests/test_tictactoe.cpp tictactoe.cpp
-./tests/test_tictactoe
-
-g++ -std=c++11 -I. -o tests/test_ai tests/test_ai.cpp tictactoe.cpp ai.cpp
-./tests/test_ai
+make run-tests
 ```
 
 ## Auteur
