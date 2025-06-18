@@ -31,10 +31,22 @@ Ce projet implémente un jeu de Tic-Tac-Toe avec une IA utilisant l'algorithme M
 
 ## Structure du projet
 
-- `main.cpp` : Contient la logique principale du jeu et l'intégration avec SQLite.
+- `main.cpp` : Logique principale et intégration avec SQLite.
 - `tictactoe.cpp` : Contient les fonctions de gestion du plateau de jeu.
 - `ai.cpp` : Contient l'implémentation de l'algorithme Minimax pour l'IA.
 - `tictactoe.h` et `ai.h` : Contiennent les déclarations des fonctions utilisées dans `tictactoe.cpp` et `ai.cpp`.
+
+## Tests
+
+Pour compiler et exécuter les tests :
+
+```sh
+g++ -std=c++11 -I. -o tests/test_tictactoe tests/test_tictactoe.cpp tictactoe.cpp
+./tests/test_tictactoe
+
+g++ -std=c++11 -I. -o tests/test_ai tests/test_ai.cpp tictactoe.cpp ai.cpp
+./tests/test_ai
+```
 
 ## Auteur
 

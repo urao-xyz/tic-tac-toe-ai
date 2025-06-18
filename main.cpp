@@ -4,6 +4,7 @@
 #include "ai.h"
 #include <cstdlib>
 #include <ctime>
+#include <string>
 
 void logMove(sqlite3 *db, int gameId, int player, int row, int col) {
     std::string query = "INSERT INTO moves (game_id, player, row, col) VALUES (" +
@@ -73,7 +74,7 @@ int main() {
         return 1;
     }
 
-    // Générer un ID unique pour la partie
+    // Générer un identifiant pseudo-aléatoire pour la partie
     srand(static_cast<unsigned>(time(0)));
     int gameId = rand();
     int totalMoves = 0;
